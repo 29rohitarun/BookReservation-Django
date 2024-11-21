@@ -1,0 +1,49 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" 
+    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/oOjlpcV8Qyq46cDfl" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <link type ="text/css" rel = "stylesheet" href="{% static 'faculty/css/style.css' %}" />
+    
+    </head>
+    <body>
+        <header class="navbar navbar-expand bg-dark">
+            <a class="navbar-brand text-white" href="#">Bus 443</a>
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="{% url 'home' %}">Home</a>
+                </li>
+            </ul>
+
+            {% if not user.is_authenticated %}
+
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="btn btn-sm btn-secondary" href="{% url 'login' %}">Log in</a>
+                </li>
+            </ul>
+
+            {% else %}
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="btn btn-sm btn-secondary" href="{% url 'logout' %}">Log out</a>
+                </li>
+            </ul>
+
+            {% endif %}
+        </header>
+        {% block container %}
+        <div>
+            {% block content %}
+
+            {% endblock %}
+        </div>
+        {% endblock %}
+    </body>
+</html>
