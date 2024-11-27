@@ -22,7 +22,11 @@ from django.contrib.auth.views import LoginView, LogoutView
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("home/", views.home, name="home"),
+    path("dashboard/", views.dashboard, name="dashboard"),
+    path("studentdetails/", views.student_details, name="studentdetails"),
+    path("bookdetails/", views.book_details, name="bookdetails"),
     path("login/", LoginView.as_view(template_name="bookreservation/login.html"), name="login"),
+    path("reservation/", views.book_reservation, name="reservation"),
+    path("savereservation/", views.savereservation, name="savereservation"),
     path("logout/", LogoutView.as_view(), name="logout"), # we will redirect user to the login page
 ]

@@ -128,7 +128,7 @@ STATIC_URL = "static/"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # On succesful login, django will redirect the user to the url path alias below
-LOGIN_REDIRECT_URL = 'home'
+LOGIN_REDIRECT_URL = 'dashboard'
 
 # When the user logs out, the user will be redirected to the url path alias provided below
 LOGOUT_REDIRECT_URL = 'login'

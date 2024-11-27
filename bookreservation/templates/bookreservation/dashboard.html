@@ -1,0 +1,75 @@
+{% extends 'bookreservation/base.html' %}
+
+{% block content %}
+
+<div class="container mt-5 text-center">
+    <div class="container mt-5 text-center"></div>
+        <div class="mt-5">
+            <h4>Average GPA</h4>
+            <canvas id="gpacanvas" width="200px" height="50px"></canvas>
+        </div>
+        <div class="container mt-5 text-center">
+            <h4>Total Enrolled Students</h4>
+            <canvas id="totstudentcanvas" width="200px" height="50px"></canvas>
+        </div>
+    </div>
+</div>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
+<script>
+    let gpa = document.getElementById("gpacanvas")
+    let gpachart = new Chart(gpa, {
+
+        type:'bar',
+        data:{
+            labels:["Average GPA"],
+            datasets:[{
+                label: ["Average GPA"],
+                data: [{{avggpa}}],
+                backgroundColor: ['rgb(232, 28, 28, 0.8)']
+            }]
+        }
+    });
+
+    let totstudent = document.getElementById("totstudentcanvas");
+    let totstudentchart = new Chart(totstudent, {
+        type: 'bar',
+        data: {
+            labels: ["Total Enrolled Students"],
+            datasets: [{
+                label: "Total Enrolled Students",
+                data: [{{totalstudents}}],
+                backgroundColor: ['rgb(237, 0, 194)']
+            }]
+        }
+    });
+
+
+
+
+</script>
+
+<div class="container mt-5 text-center">
+
+    <h4>Student Population</h4>
+    <div class="mt-5">
+        <canvas id="studentcanvas" width="100" height="50px"></canvas>
+    </div>
+</div>
+<script>   
+    let student = document.getElementById("studentcanvas")
+    let studentchart = new Chart(student, {
+
+        type:'pie',
+        data:{
+            labels:["Freshmen", "Sophomore", "Junior", "Senior"],
+            datasets:[{
+                label: ["Freshmen", "Sophomore", "Junior", "Senior"], 
+                data: [{{freshman}}, {{sophomore}}, {{junior}}, {{senior}}],
+                backgroundColor: ['rgb(232, 28, 28, 0.8)', 'rgb(50, 168, 123)', 'rgb(129, 80, 199)', 'rgb(224, 245, 42)']
+            }]
+        }
+    })
+</script>
+{% endblock %}
